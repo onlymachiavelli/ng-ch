@@ -6,6 +6,130 @@ body {
   background-color: #f5f5f5;
 }
 
+/* ===== MENU ===== */
+.menu {
+  float: left;
+  height: 700px;
+  width: 70px;
+  background: #4768b5;
+  background: -webkit-linear-gradient(#4768b5, #35488e);
+  background: -o-linear-gradient(#4768b5, #35488e);
+  background: -moz-linear-gradient(#4768b5, #35488e);
+  background: linear-gradient(#4768b5, #35488e);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+.row {
+  display: flex;
+}
+
+.menu .items {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+}
+
+.menu .items .item {
+  height: 70px;
+  border-bottom: 1px solid #6780cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #9fb5ef;
+  font-size: 17pt;
+}
+
+.menu .items .item-active {
+  background-color: #5172c3;
+  color: #fff;
+}
+
+.menu .items .item:hover {
+  cursor: pointer;
+  background-color: #4f6ebd;
+  color: #cfe5ff;
+}
+
+/* === CONVERSATIONS === */
+
+.discussions {
+  width: 35%;
+  height: 100vh;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: inline-block;
+}
+
+.discussions .discussion {
+  width: 100%;
+  height: 90px;
+  background-color: #fafafa;
+  border-bottom: solid 1px #e0e0e0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.discussions .search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0e0e0;
+}
+
+.discussions .search .searchbar {
+  height: 40px;
+  background-color: #fff;
+  width: 70%;
+  padding: 0 20px;
+  border-radius: 50px;
+  border: 1px solid #b9b9b9;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.discussions .search .searchbar input {
+  margin-left: 15px;
+  height: 38px;
+  width: 100%;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.discussions .search .searchbar *::-webkit-input-placeholder {
+  color: #c3c3c3;
+}
+.discussions .search .searchbar input *:-moz-placeholder {
+  color: #e0e0e0;
+}
+.discussions .search .searchbar input *::-moz-placeholder {
+  color: #e0e0e0;
+}
+.discussions .search .searchbar input *:-ms-input-placeholder {
+  color: #e0e0e0;
+}
+
+.discussions .message-active {
+  width: 98.5%;
+  height: 90px;
+  background-color: #fff;
+  border-bottom: solid 1px #e0e0e0;
+}
+
+.discussions .discussion .photo {
+  margin-left: 20px;
+  display: block;
+  width: 45px;
+  height: 45px;
+  background: #e6e7ed;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .online {
   position: relative;
   top: 30px;
@@ -51,7 +175,7 @@ body {
 }
 
 .chat {
-  width: 100%;
+  width: calc(65% - 85px);
 }
 
 .header-chat {
@@ -117,8 +241,7 @@ body {
 .time {
   font-size: 10px;
   color: lightgrey;
-  margin-bottom: 10px;
-  margin-left: 85px;
+  margin-left: 50px;
 }
 
 .response-time {
@@ -130,6 +253,7 @@ body {
   float: right;
   margin-right: 0px !important;
   margin-left: auto; /* flexbox alignment rule */
+  position: relative;
 }
 
 .response .text {
