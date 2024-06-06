@@ -129,7 +129,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.messages-chat {
+  max-height: 73vh;
+  overflow-y: scroll;
+}
 .online {
   position: relative;
   top: 30px;

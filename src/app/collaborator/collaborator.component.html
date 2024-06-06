@@ -10,7 +10,7 @@
             aria-hidden="true"
           ></i>
         </div>
-        <div class="messages-chat">
+        <div class="messages-chat" id="eoc">
           <ng-container *ngFor="let message of conversation">
             <!-- Other messages -->
             <div *ngIf="!isMyMessage(message)" class="message-container">

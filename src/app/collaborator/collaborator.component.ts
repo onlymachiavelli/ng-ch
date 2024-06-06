@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
+import { SocketService } from '../../services/socket.service'
 
 /*@ts-ignore */
 @Component({
@@ -58,14 +59,23 @@ export class CollaboratorComponent {
       .then((data) => {
         console.log(data)
         this.fetchConversation()
+        //go to the end of the chat
       })
       .catch((error) => {
         console.error('Error sending message:', error)
       })
-      
   }
+  constructor(private socketService: SocketService) {}
 
   ngOnInit() {
+    const chat: any = document.getElementById('eoc')
+    if (chat) {
+      console.log(chat)
+      chat.scrollTop = chat.scrollHeight
+    }
     this.fetchConversation()
+    this.socketService.on('message').subscribe((message: any) => {
+      this.conversation.push(message)
+    })
   }
 }

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
+import { SocketService } from '../../services/socket.service'
 
-/*@ts-ignore*/
+/*@ts-ignore */
 @Component({
   selector: 'app-conversation',
   standalone: true,
@@ -14,11 +15,14 @@ export class ConversationComponent implements OnInit {
   chatrooms: any[] = []
   chatRoomData: any
   conversation: any[] = []
+  messageInput: string = ''
 
   backend: string = 'http://localhost:3001/chatroom'
-  backendTarget: string = `http://localhost:3001/messages/admin/`
+  backendTarget: string = 'http://localhost:3001/messages/admin/'
   tokenExample: string =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2IiwiaWF0IjoxNzE3NTA1OTMzLCJleHAiOjE3MTgxMTA3MzN9.yiflcayCbqEWH-HxlZxzCClG3yQOm_COIypJjX0vsqo'
+
+  constructor(private socketService: SocketService) {}
 
   ngOnInit() {
     this.fetchAllChatRooms()
@@ -26,6 +30,11 @@ export class ConversationComponent implements OnInit {
       if (this.chatRoomData) {
         this.fetchConversation()
       }
+    })
+
+    // Listen for incoming messages
+    this.socketService.on('message').subscribe((message: any) => {
+      this.conversation.push(message)
     })
   }
 
@@ -39,7 +48,6 @@ export class ConversationComponent implements OnInit {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         this.chatrooms = data
       })
       .catch((error) => {
@@ -57,19 +65,13 @@ export class ConversationComponent implements OnInit {
           Authorization: `Bearer ${this.tokenExample}`,
         },
       })
-      const data = await response.json()
-      console.log({ chatRoom: data, line: 54 })
-      this.chatRoomData = data
+      this.chatRoomData = await response.json()
     } catch (error) {
       console.error('Error fetching chat room:', error)
     }
   }
 
   fetchConversation() {
-    console.log({
-      chatRoomData: this.chatRoomData,
-      backendTarget: this.backendTarget,
-    })
     if (this.chatRoomData) {
       fetch(
         `${this.backendTarget}${this.chatRoomData.chatRoom.collaboratorMatricule}`,
@@ -83,8 +85,6 @@ export class ConversationComponent implements OnInit {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log('FETCHING MESSAGES :')
-          console.log({ messages: data, line: 83 })
           this.conversation = data.messages
         })
         .catch((error) => {
@@ -92,11 +92,10 @@ export class ConversationComponent implements OnInit {
         })
     }
   }
+
   isMyMessage(message: any): boolean {
     return message.senderAlias === 'admin'
   }
-
-  messageInput: any
 
   getVal(val: any) {
     this.messageInput = val.target.value
@@ -106,7 +105,6 @@ export class ConversationComponent implements OnInit {
     if (this.messageInput.trim() !== '') {
       const newMessage = {
         message: this.messageInput,
-
         target: this.chatRoomData.chatRoom.collaboratorMatricule,
         chatRoomId: this.chatRoomData.chatRoom.id,
       }
@@ -123,8 +121,8 @@ export class ConversationComponent implements OnInit {
         .then((response) => {
           if (response.ok) {
             this.messageInput = ''
-
-            this.fetchConversation()
+            this.socketService.emit('message', newMessage) // Emit the message
+            this.fetchConversation() // Fetch updated conversation
           } else {
             console.error('Failed to send message')
           }
