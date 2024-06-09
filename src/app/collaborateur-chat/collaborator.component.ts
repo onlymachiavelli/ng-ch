@@ -10,10 +10,10 @@ import { SocketService } from '../../services/socket.service'
   templateUrl: './collaborator.component.html',
   styleUrl: './collaborator.component.css',
 })
-export class CollaboratorComponent {
+export class CollaboratorChatComponent {
   conversation: any = []
   tokenExample: string =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjIyNyIsImlhdCI6MTcxNzYzMzk2MSwiZXhwIjoxNzE4MjM4NzYxfQ.GLJgv9B2vjoulAvp09eaXT6-wTg0NtTX6mA5T3db4ZA'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjIyNyIsImlhdCI6MTcxNzk2MDA4OCwiZXhwIjoxNzE4NTY0ODg4fQ.CGgA4HO9_wBG7PcLdE00gH0G9YRTt6cI1f1PuDquu7s'
   sendBack: string = 'http://localhost:3001/messages/col/send'
   fetchBack: string = 'http://localhost:3001/messages/col/'
 

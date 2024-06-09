@@ -1,0 +1,33 @@
+<h1>Ajouter un medecin</h1>
+
+<div class="dialogue">
+  
+  <mat-form-field floatLabel="always">
+    <mat-label>matricule</mat-label>
+    <input matInput type="number" class="example-right-align">
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>nom</mat-label>
+      <input matInput type="text" class="example-right-align" >
+     </mat-form-field>
+
+      <mat-form-field floatLabel="always">
+        <mat-label>prenom</mat-label>
+        <input matInput type="text" class="example-right-align" >
+       
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always">
+          <mat-label>spécialité</mat-label>
+          <input matInput type="text" class="example-right-align" >
+          </mat-form-field>
+
+        
+          <div class="example-button-row">    
+            <button class="cancel-btn" mat-raised-button color="warn" (click)="onNoClick()">Annuler</button>
+            <button class="confirm-btn" mat-raised-button color="primary" (click)="onSave()">Ajouter</button>
+        </div>
+           
+
+</div>

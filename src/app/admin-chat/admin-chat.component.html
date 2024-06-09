@@ -2,15 +2,11 @@
   <div class="container">
     <div class="row">
       <section class="discussions">
-        <div class="discussion search">
-          <div class="searchbar">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="text" placeholder="Search..." />
-          </div>
-        </div>
-
         <div class="discussion" *ngFor="let chatroom of chatrooms">
-          <a routerLink="/admin/conversation/chatroom.chatRoom.id">
+          <a
+            routerLink="/admin/conversation/chatroom.chatRoom.id"
+            class="linker"
+          >
             <div
               class="photo"
               style="
@@ -25,7 +21,6 @@
                 Matrricule Num : {{ chatroom.users.matricule }}
               </p>
             </div>
-            <div class="timer">1 week</div>
           </a>
         </div>
       </section>

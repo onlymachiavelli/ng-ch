@@ -44,6 +44,9 @@ body {
   color: #fff;
 }
 
+.linker {
+  display: flex;
+}
 .menu .items .item:hover {
   cursor: pointer;
   background-color: #4f6ebd;

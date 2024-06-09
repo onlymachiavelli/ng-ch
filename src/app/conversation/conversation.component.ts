@@ -20,7 +20,7 @@ export class ConversationComponent implements OnInit {
   backend: string = 'http://localhost:3001/chatroom'
   backendTarget: string = 'http://localhost:3001/messages/admin/'
   tokenExample: string =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2IiwiaWF0IjoxNzE3NTA1OTMzLCJleHAiOjE3MTgxMTA3MzN9.yiflcayCbqEWH-HxlZxzCClG3yQOm_COIypJjX0vsqo'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2IiwiaWF0IjoxNzE3OTYwMDg4LCJleHAiOjE3MTg1NjQ4ODh9.3GLFSkq1z8cZYnHhNgNKeZG5Vwnsm9d1-7FmrxG30ic'
 
   constructor(private socketService: SocketService) {}
 
