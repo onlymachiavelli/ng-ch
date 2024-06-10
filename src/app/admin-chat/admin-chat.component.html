@@ -3,10 +3,7 @@
     <div class="row">
       <section class="discussions">
         <div class="discussion" *ngFor="let chatroom of chatrooms">
-          <a
-            routerLink="/admin/conversation/chatroom.chatRoom.id"
-            class="linker"
-          >
+          <a href="/admin/chat/conversation/{{ chatroom.id }}" class="linker">
             <div
               class="photo"
               style="

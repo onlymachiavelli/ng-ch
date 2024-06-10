@@ -12,17 +12,19 @@ import { SocketService } from '../../services/socket.service'
 })
 export class CollaboratorChatComponent {
   conversation: any = []
-  tokenExample: string =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjIyNyIsImlhdCI6MTcxNzk2MDA4OCwiZXhwIjoxNzE4NTY0ODg4fQ.CGgA4HO9_wBG7PcLdE00gH0G9YRTt6cI1f1PuDquu7s'
+  tokenExample: string = ''
   sendBack: string = 'http://localhost:3001/messages/col/send'
   fetchBack: string = 'http://localhost:3001/messages/col/'
 
-  fetchConversation() {
+  //define global constructor
+
+  fetchConversation(token: string) {
+    console.log('token:', token)
     fetch(this.fetchBack, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.tokenExample}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -58,22 +60,25 @@ export class CollaboratorChatComponent {
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
-        this.fetchConversation()
+        this.fetchConversation(this.tokenExample)
         //go to the end of the chat
       })
       .catch((error) => {
         console.error('Error sending message:', error)
       })
   }
-  constructor(private socketService: SocketService) {}
+  constructor(private socketService: SocketService) {
+    this.tokenExample = localStorage.getItem('token') || ''
+  }
 
   ngOnInit() {
+    console.log('test :', this.tokenExample)
     const chat: any = document.getElementById('eoc')
     if (chat) {
       console.log(chat)
       chat.scrollTop = chat.scrollHeight
     }
-    this.fetchConversation()
+    this.fetchConversation(this.tokenExample)
     this.socketService.on('message').subscribe((message: any) => {
       this.conversation.push(message)
     })
