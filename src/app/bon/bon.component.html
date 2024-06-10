@@ -1,29 +1,23 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bons de consultation</title>
-    <link rel="stylesheet" href="sahsah.component.css" />
+    <link rel="stylesheet" href="bon.component.css" />
   </head>
   <body>
+
     <div class="btn-container">
-      <button mat-raised-button (click)="navigateToAjoutbon()"> Ajouter un bon
-      </button>
+      <button mat-raised-button (click)="navigateToAjoutbon()"> Ajouter un bon</button>
     </div>
 
     <div class="card-container">
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title-group>
-            <mat-card-title>{{ bonData.nom }}</mat-card-title>
-            <mat-card-subtitle>{{ bonData.matricule }}</mat-card-subtitle>
-            <img
-              mat-card-sm-image
-              [src]="'assets/coll.jpg'"
-              alt="collaborateur"
-            />
+           
           </mat-card-title-group>
         </mat-card-header>
         <mat-card-content>
@@ -34,9 +28,13 @@
           <p>
             <strong>Informations supplémentaires:</strong> {{ bonData.info }}
           </p>
+          <img mat-card-sm-image [src]="'assets/coll.jpg'" alt="collaborateur"/>
+          <mat-icon>edit</mat-icon>
+            <button mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
         </mat-card-content>
       </mat-card>
     </div>
   </body>
 </html>
--->

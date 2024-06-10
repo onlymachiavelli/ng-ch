@@ -4,7 +4,7 @@
       <section class="chat">
         <div class="header-chat">
           <i class="icon fa fa-user-o" aria-hidden="true"></i>
-          <p class="name">Admins ChatRoom</p>
+          <p class="name">Service Social</p>
           <i
             class="icon clickable fa fa-ellipsis-h right"
             aria-hidden="true"
@@ -12,14 +12,14 @@
         </div>
         <div class="messages-chat" id="eoc">
           <ng-container *ngFor="let message of conversation">
-            <!-- Other messages -->
+            <!--  message service social -->
             <div *ngIf="!isMyMessage(message)" class="message-container">
               <div class="message">
                 <p class="text">{{ message.message }}</p>
                 <p class="time">{{ message.sentAt | date : "shortTime" }}</p>
               </div>
             </div>
-            <!-- My messages -->
+            <!-- Mon message -->
             <div *ngIf="isMyMessage(message)" class="message-container">
               <div class="message text-only">
                 <div class="response">

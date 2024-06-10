@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './sahsah.component.css',
 
 })
-export class SahsahComponent implements OnInit {
+export class SahsahComponent {/*implements OnInit {
  
   bonData: any = {
     nom: '',

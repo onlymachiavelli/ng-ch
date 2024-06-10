@@ -29,8 +29,17 @@
 
 .mat-mdc-raised-button:not(:disabled) {
   background-color: #003d89;
+  color: white;
 }
 
 .btn-container {
   margin: 12px 0px;
+}
+
+.edit-icon {
+  color: #003d89 ;
+}
+
+.delete-icon {
+  color: #ff0000 ; 
 }

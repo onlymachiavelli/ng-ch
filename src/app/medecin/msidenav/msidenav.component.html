@@ -11,19 +11,30 @@
 <body>
     <div class="main">
         <div class="topbar">
-            <div class="search-container">
-                <div>
-            <input id="namanyay-search-box" name="q" size="40" type="text" placeholder="Rechercher"/>
-         </div>
-            <div id="namanyay-search-btn" >   
-             <i class='bx bxs-search'></i>
+       
+    
+          <div class="search-container">
+            <div>
+              <input
+                id="namanyay-search-box"
+                name="q"
+                size="40"
+                type="text"
+                placeholder="Rechercher"
+              />
             </div>
-        </div>
-            <div class="user">
-                <img src="assets/téléchargé.png" alt="">
+            <div id="namanyay-search-btn">
+              <i class="bx bxs-search"></i>
             </div>
+          </div>
+    
+          <div class="user">
+            <img
+              src="	https://icon-library.com/images/web-user-icon/web-user-icon-8.jpg"
+              alt=""
+            />
+          </div>
         </div>
-
 
   </div>   
     <div class="container">
@@ -32,32 +43,29 @@
             <ul>
                 <li>
                     <div class="logo">
-                        <img src="/assets/leonilogo.png" alt="Leoni logo">
+                      <img
+                        src="https://companieslogo.com/img/orig/LEO.DE.D-32976d80.png?t=1692025444"
+                        alt="Leoni logo Admin"
+                      />
                     </div>
-                </li>
                 <div class="date">
                     <p>{{ myDate | date }}</p>
                 </div>
                 <li>
-                    <a routerLink="/medecin/acceuil_medecin">
+                    <a routerLink="/medecin/acceuil">
                         <i class='bx bx-chat'></i>
                         <span class="title">Acceuil</span>
                     </a>
                 </li>
+              
                 <li>
-                    <a href="#">
-                        <i class='bx bx-chat'></i>
-                        <span class="title">Chat</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="/medecin/calendrier">
                         <i class='bx bx-calendar'></i>
                         <span class="title">Calendrier</span>
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/medecin/bon">
+                    <a href="/medecin/bon">
                         <i class='bx bx-clipboard'></i>
                         <span class="title">Mes bons de consultation</span>
                     </a>
@@ -65,13 +73,26 @@
             
             </ul>
         </div>
-        <div class="nav-item-btn">
-            <button class="btn-logout">Déconnexion</button>
+        
+        
+        </div>
+        <div class="nav-item-btn logout">
+        <button class="btn-logout">Déconnexion</button>
         </div>
         </div>
+        
+       
+        
         <div class="main-content">
             <router-outlet></router-outlet>
         </div>
-    </div>
+   
 </body>
 </html>
+
+
+
+
+
+     
+  

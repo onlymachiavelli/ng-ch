@@ -17,6 +17,7 @@ import { RegistrationComponent } from './shared/registration/registration.compon
 import { LoginComponent } from './shared/login/login.component'
 import { AcceuilcComponent } from './collaborateur/acceuilc/acceuilc.component'
 import { CsidenavComponent } from './collaborateur/csidenav/csidenav.component'
+import { BonComponent } from './bon/bon.component'
 
 export const routes: Routes = [
   {
@@ -28,9 +29,12 @@ export const routes: Routes = [
       { path: 'liste medecin', component: ListemedecinComponent },
       { path: 'liste collaborateur', component: ListecollComponent },
       { path: 'calendrier', component: CalendrierComponent },
-      { path: 'infocoll', component: CollComponent },
-      { path: 'bon', component: SahsahComponent },
+      { path: 'infocoll:matricule', component: CollComponent },
+      { path: 'test', component: SahsahComponent },//test
       { path: 'chat', component: AdminChatComponent },
+      { path: 'bon', component: BonComponent },
+
+
 
       { path: 'chat/conversation/:id', component: ConversationComponent },
     ],
@@ -53,7 +57,9 @@ export const routes: Routes = [
     children: [
       { path: 'acceuil', component: AcceuilmComponent },
       { path: 'calendrier', component: CalendrierComponent },
-      { path: 'bon', component: SahsahComponent },
+      { path: 'test', component: SahsahComponent },//test
+      { path: 'bon', component: BonComponent },
+
     ],
   },
 
@@ -67,11 +73,7 @@ export const routes: Routes = [
     children: [
       { path: 'acceuil', component: AcceuilcComponent },
       { path: 'calendrier', component: CalendrierComponent },
-
-      {
-        path: 'chat',
-        component: CollaboratorChatComponent,
-      },
+      {path: 'chat',component: CollaboratorChatComponent,},
     ],
   },
   //------------------- shared ------------------------

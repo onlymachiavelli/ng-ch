@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #f5f5f5;
+  background-color: #e6f1ff;
 }
 
 /* ===== MENU ===== */
@@ -11,7 +11,7 @@ body {
   float: left;
   height: 700px;
   width: 70px;
-  background: #4768b5;
+  background: #003d89;
   background: -webkit-linear-gradient(#4768b5, #35488e);
   background: -o-linear-gradient(#4768b5, #35488e);
   background: -moz-linear-gradient(#4768b5, #35488e);
@@ -35,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #9fb5ef;
+  color: #003d89;
   font-size: 17pt;
 }
 
@@ -63,8 +63,8 @@ body {
 .discussions .discussion {
   width: 100%;
   height: 90px;
-  background-color: #fafafa;
-  border-bottom: solid 1px #e0e0e0;
+  background-color: #e6f1ff;
+  border-bottom: solid 1px #e6f1ff;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -113,7 +113,7 @@ body {
 .discussions .message-active {
   width: 98.5%;
   height: 90px;
-  background-color: #fff;
+  background-color: #e6f1ff;
   border-bottom: solid 1px #e0e0e0;
 }
 
@@ -153,7 +153,7 @@ body {
   margin: 0 0 0 20px;
   font-family: "Montserrat", sans-serif;
   font-size: 11pt;
-  color: #515151;
+  color: #003d89;
 }
 
 .discussions .discussion .message {
@@ -197,7 +197,7 @@ body {
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-size: 13pt;
-  color: #515151;
+  color: #003d89;
 }
 
 .chat .header-chat .right {
@@ -256,7 +256,7 @@ body {
 .response {
   float: right;
   margin-right: 0px !important;
-  margin-left: auto; /* flexbox alignment rule */
+  margin-left: auto; 
   position: relative;
 }
 
@@ -283,7 +283,7 @@ body {
 
 .chat .footer-chat .send {
   color: #fff;
-  background-color: #4f6ebd;
+  background-color: #003d89;
   position: absolute;
   right: 50px;
   padding: 12px 12px 12px 12px;
@@ -296,7 +296,7 @@ body {
   text-transform: uppercase;
   font-family: "Montserrat", sans-serif;
   font-size: 13pt;
-  color: #515151;
+  color: #003d89;
 }
 
 .chat .footer-chat .right {
@@ -335,7 +335,7 @@ body {
 }
 
 .send-message {
-  background-color: #4f6ebd;
+  background-color: #003d89;
   color: #fff;
   font-size: 14pt;
   width: 200px;

@@ -10,11 +10,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { Dialog2Component } from '../dialog2/dialog2.component';
 import { MatIconModule } from '@angular/material/icon';
 import { Dialog3Component } from '../dialog3/dialog3.component';
+import { Router, RouterModule } from '@angular/router';
 
 export interface CollaborateurData {
   matricule: string;
   nom: string;
-  prenom: string;
   tel: string;
 }
 
@@ -29,24 +29,26 @@ export interface CollaborateurData {
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule,
+
   ],
   templateUrl: './listecoll.component.html',
   styleUrls: ['./listecoll.component.css']
 })
 export class ListecollComponent implements AfterViewInit {
-  displayedColumns: string[] = ['matricule', 'nom', 'prenom', 'tel', 'action'];
+  displayedColumns: string[] = ['matricule', 'nom', 'tel', 'action'];
   dataSource: MatTableDataSource<CollaborateurData>;
   collaborateur: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router:Router) {
     const collaborateur: CollaborateurData[] = [
-      { matricule: '11111', nom: 'ahmed', prenom: 'foulen', tel: '123456789' },
-      { matricule: '12345', nom: 'mohamed', prenom: 'benfoulen', tel: '127845166' },
-      { matricule: '22222', nom: 'ahmed', prenom: 'foulen', tel: '123456789' },
+      { matricule: '11111', nom: 'ahmed', tel: '123456789' },
+      { matricule: '12345', nom: 'mohamed', tel: '127845166' },
+      { matricule: '22222', nom: 'ahmed',  tel: '123456789' },
     ];
     this.dataSource = new MatTableDataSource(collaborateur);
   }
@@ -55,7 +57,6 @@ export class ListecollComponent implements AfterViewInit {
     const nouvelCollaborateur: CollaborateurData = {
       matricule: '00000',
       nom: 'Nouveau',
-      prenom: 'medecin',
       tel: '000000000',
     };
     this.dataSource.data.push(nouvelCollaborateur);
@@ -79,7 +80,6 @@ export class ListecollComponent implements AfterViewInit {
         this.dataSource.paginator.firstPage();
       }
     } else {
-      // Réinitialisez le filtre
       this.dataSource.filter = '';
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
@@ -109,4 +109,11 @@ export class ListecollComponent implements AfterViewInit {
       console.log('Le dialogue a été fermé, données reçues:', result);
     });
   }
+
+
+
+  navigateToInfo(matricule:string):void{
+    this.router.navigate(['/infocoll',matricule]);
+  }
+
 }

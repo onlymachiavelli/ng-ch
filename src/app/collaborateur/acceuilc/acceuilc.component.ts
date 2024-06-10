@@ -6,6 +6,7 @@ import { Chart } from 'angular-highcharts';
 import { MatDatepickerModule, MatDatepicker } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-acceuilc',
@@ -16,7 +17,8 @@ import { MatCardModule } from '@angular/material/card';
     ChartModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule
   ],
 
   templateUrl: './acceuilc.component.html',
@@ -40,14 +42,16 @@ export class AcceuilcComponent implements OnInit {
     chart: {
       type: 'pie',
       plotShadow: false,
+      width:500,
+      height:500,
     },
     credits: {
       enabled: false,
     },
     plotOptions: {
       pie: {
-        innerSize: '99%',
-        borderWidth: 10,
+        innerSize: '88%',
+        borderWidth: 5,
         borderColor: '',
         slicedOffset: 10,
         dataLabels: {
@@ -70,8 +74,7 @@ export class AcceuilcComponent implements OnInit {
           { name: 'Ouvriers', y: 1, color: '#eeeeee' },
           { name: 'Techniciens', y: 2, color: '#003d89' },
           { name: 'Ingénieurs', y: 3, color: '#1161b9' },
-          { name: 'Médecins externes', y: 4, color: '#eeeeee' },
-          { name: 'Collaborateurs', y: 5, color: '#e6f1ff' },
+          { name: 'Médecins externes', y: 4, color: '#e6f1ff' },
         ],
       },
     ],

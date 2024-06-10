@@ -27,432 +27,11 @@ body {
   width: 100%;
 }
 
-/* =============== Navigation ================ */
-.navigation {
-  position: fixed;
-  width: 300px;
-  height: 100%;
-  background: var(--blue);
-  border-left: 10px solid var(--blue);
-  transition: 0.5s;
-  overflow: auto;
-}
 
-.navigation.active {
-  width: 80px;
-}
-
-.navigation ul {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.navigation ul li {
-  position: relative;
-  width: 100%;
-  list-style: none;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-
-.navigation ul li:hover,
-.navigation ul li.hovered {
-  background-color: var(--white);
-}
-
-.navigation ul li:nth-child(1) {
-  margin-bottom: 40px;
-  pointer-events: none;
-}
-
-.navigation ul li a {
-  position: relative;
-  display: block;
-  width: 100%;
-  display: flex;
-  text-decoration: none;
-  color: var(--white);
-}
-.navigation ul li:hover a,
-.navigation ul li.hovered a {
-  color: var(--blue);
-}
-
-.navigation ul li a .icon {
-  position: relative;
-  display: block;
-  min-width: 60px;
-  height: 60px;
-  line-height: 75px;
-  text-align: center;
-}
-.navigation ul li a .icon ion-icon {
-  font-size: 1.75rem;
-}
-
-.navigation ul li a .title {
-  position: relative;
-  display: block;
-  padding: 0 10px;
-  height: 60px;
-  line-height: 60px;
-  text-align: start;
-  white-space: nowrap;
-}
-  
-  /* =============== Navigation ================ */
-  .logo {
-    text-align: center;
-    padding: 2.0rem 0.5rem;
-    img {
-      width : 200px;
-    }
-  }
-  .navigation {
-    position: fixed;
-    top:20px;
-    left:20px;
-    bottom:20px;
-    width: 300px;
-    height: 100%;
-    overflow-y: auto;
-    background: var(--blue);
-    border-left: 10px solid var(--blue);
-    transition: 0.5s;
-    overflow: hidden;
-    border-radius: 30px;
-  }
-  .navigation.active {
-    width: 80px;
-  }
-  
-  .navigation ul {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    justify-content: center; 
-    align-items: center; 
-    top: 50%;
-    margin-bottom: 20px;
-    transform: translateY(-50%);
-    
-    }
-  
-  .navigation ul li {
-    position: relative;
-    width: 100%;
-    list-style: none;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    justify-content: center; 
-    align-items: center; 
-    
-  }
-  
-  .navigation ul li:hover,
-  .navigation ul li.hovered {
-    background-color: var(--white);
-  }
-  
-  .navigation ul li:nth-child(1) {
-    margin-bottom: 40px;
-    pointer-events: none;
-  }
-  
-  .navigation ul li a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--white);
-  }
-  .navigation ul li:hover a,
-  .navigation ul li.hovered a {
-    color: var(--blue);
-  }
-  
-  .navigation ul li a .icon {
-
-  /*position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    line-height: 75px;
-    text-align: center;
-   
-  */margin-right: 30px;
-    margin-left: 30px;
-  }
-  .navigation ul li a .icon ion-icon {
-    font-size: 1.75rem;
-  }
-  
-  .navigation ul li a .title {
-    position: relative;
-    display: block;
-    padding: 0 20px;
-    height: 60px;
-    line-height: 60px;
-    text-align: start;
-    white-space: nowrap;
-  }
- 
- 
-  
-  .logout-container {
-    max-width: 150px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 5px 10px;
-    background: var(--white);
-    text-decoration: none;
-    color: var(--blue); 
-    border-radius: 6px;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-}
-
-.dark-mode-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
-}
-
-  /* --------- sidenav ---------- */
-  .navigation ul li:hover a::before,
-  .navigation ul li.hovered a::before {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: -50px;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border-radius: 50%;
-    box-shadow: 35px 35px 0 10px var(--white);
-    pointer-events: none;
-  }
-  .navigation ul li:hover a::after,
-  .navigation ul li.hovered a::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: -50px;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border-radius: 50%;
-    box-shadow: 35px -35px 0 10px var(--white);
-    pointer-events: none;
-
-  }
-  .btn-logout  {
-    position: center;
-    background-color: #ffffff; 
-    border: 1px solid #fff; 
-    color: #003d89; 
-    padding: 10px 20px; 
-    text-align: center; 
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 16px; 
-    cursor: pointer; 
-    border-radius: 10.79px; 
-  
-}
- 
-
-
-
-
-
-section {
-  display: table;
-}
-
-.example-label {
-  display: table-cell;
-  font-size: 14px;
-  margin-left: 8px;
-  min-width: 120px;
-}
-
-.example-button-row {
-  display: table-cell;
-  max-width: 600px;
-}
-
-.example-button-row .mat-mdc-button-base {
-  margin: 8px 8px 8px 0;
-}
-
-.example-flex-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.example-button-container {
-  display: flex;
-  justify-content: center;
-  width: 120px;
-}
-
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #1161b9;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #e6f1ff;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #e6f1ff;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-.date{
-  font-family: Poppins;
-  font-size:  18px;
-  color: #fff;
-  margin-right: 10px;
-  text-align: center; 
-  margin-bottom: 50px;
-  width: 100%;
-  }
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-
-.dark-mode{
-  color:#fff;
-}
-/* styles.css */
-body {
-  background-color: #ffffff; 
-  color: #000000; 
-}
-
-.dark-mode {
-  background-color: #222222; 
-  color: #ffffff; 
-}
 
 /* ===================== Main ===================== */
-.main {
-  position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
-  min-height: 100vh;
-  background: var(--white);
-  transition: 0.5s;
-}
-.main.active {
-  width: calc(100% - 80px);
-  left: 80px;
-}
 
-.topbar {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-}
 
-.toggle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  cursor: pointer;
-}
-
-.search {
-  position: relative;
-  width: 400px;
-  margin: 0 10px;
-}
-
-.search label {
-  position: relative;
-  width: 100%;
-}
-
-.search label input {
-  width: 100%;
-  height: 40px;
-  border-radius: 40px;
-  padding: 5px 20px;
-  padding-left: 35px;
-  font-size: 18px;
-  outline: none;
-  border: 1px solid var(--black2);
-}
-
-.search label ion-icon {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  font-size: 1.2rem;
-}
 
 .user {
   position: relative;
@@ -484,7 +63,7 @@ body {
 
 .cardBox .card {
   position: relative;
-  background: var(--white);
+  background:#fff;
   padding: 30px;
   border-radius: 20px;
   display: flex;
@@ -496,27 +75,27 @@ body {
   position: relative;
   font-weight: 500;
   font-size: 2.5rem;
-  color: var(--blue);
+  color: #003d89;
 }
 
 .cardBox .card .cardName {
-  color: var(--black2);
+  color:#999;
   font-size: 1.1rem;
   margin-top: 5px;
 }
 
 .cardBox .card .iconBx {
   font-size: 3.5rem;
-  color: var(--black2);
+  color: #999;
 }
 
 .cardBox .card:hover {
-  background: var(--blue);
+  background: #003d89;
 }
 .cardBox .card:hover .numbers,
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
-  color: var(--white);
+  color: #fff;
 }
 
 
@@ -545,15 +124,16 @@ body {
 }
 .recentCustomers table tr td h4 span {
   font-size: 14px;
-  color: var(--black2);
+  color: #999;
 }
 .recentCustomers table tr:hover {
-  background: var(--blue);
-  color: var(--white);
+  background:#003d89;
+  color: #fff;
 }
 .recentCustomers table tr:hover td h4 span {
-  color: var(--white);
+  color: #fff;
 }
+
 /* Search section  */
 #namanyay-search-btn {
   background:#003d89;
@@ -640,81 +220,23 @@ body {
     width: 100%;
     left: 0;
   }
-  .toggle {
-    z-index: 10001;
-  }
-  .main.active .toggle {
-    color: #fff;
-    position: fixed;
-    right: 0;
-    left: initial;
-  }
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+  
 }
 
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.charts{
+  display: flex;
+  justify-content: space-around; 
+  align-items: center; 
 }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+.pie {
+  width: 500px; 
 }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
 
-input:checked + .slider {
-  background-color: #003d89;
-}
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #003d89;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-}
 .demo-inline-calendar-card {
-  width: 400px;
+  width: 300px;
   
 }
 

@@ -57,38 +57,27 @@
         </div>
     </div>
 
-    <!-- ================  List ================= -->
-    <div class="details">
-        <div class="recentOrders">
-            <div class="cardHeader">
-                <h2>Leoni Tunisie </h2>
-
-            </div>
-
-            <table>
- <div class="charts">
-
-        <div class="pie" [chart]="donutChart">
-       
+   <!-- ================  acceuil ================= -->
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Leoni Tunisie </h2>
         </div>
-      
-    
-    </div> 
-        </table>
+
+        <div class="charts">
+            <div class="pie" [chart]="donutChart"></div>
+            <mat-card class="demo-inline-calendar-card">
+                <mat-calendar [(selected)]="selected"></mat-calendar>
+            </mat-card>
         </div>
-        <!-- ================= New Coll ================ -->
-        
-           
-                
-           <mat-card class="demo-inline-calendar-card">
-           <mat-calendar [(selected)]="selected"></mat-calendar>
-           </mat-card>
-        
-        
     </div>
+</div>
 
-
-
+    
+    
+<div class="main-content">
+    <router-outlet></router-outlet>
+</div>
 
 <!-- ====== ionicons ======= -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

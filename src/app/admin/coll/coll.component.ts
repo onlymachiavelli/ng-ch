@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 interface TableData {
   matricule: string;
@@ -27,13 +28,14 @@ interface TableData {
   templateUrl: './coll.component.html',
   styleUrls: ['./coll.component.css']
 })
-export class CollComponent {
-  
-  public myDate=new Date();
+export class CollComponent implements OnInit {
+  public myDate = new Date();
+  matricule: string | null = null; 
+
   data: TableData[] = [
     {
       matricule: '12345',
-      photo: 'assests/coll.jpg',
+      photo: 'assets/coll.jpg',
       id: 1,
       aide_execptionnelle: 'Yes',
       allouche_aid: 'No',
@@ -49,6 +51,13 @@ export class CollComponent {
       tel: '123-456-7890',
       de: 'N/A'
     },
-   
   ];
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.matricule = params.get('matricule');
+    });
+  }
 }
