@@ -18,7 +18,6 @@ export class AdminChatComponent {
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ODc2IiwiaWF0IjoxNzE3OTYwMDg4LCJleHAiOjE3MTg1NjQ4ODh9.3GLFSkq1z8cZYnHhNgNKeZG5Vwnsm9d1-7FmrxG30ic'
 
   ngOnInit() {
-    console.log("yoo what's up")
     fetch(this.backend, {
       method: 'GET',
       headers: {
@@ -30,6 +29,46 @@ export class AdminChatComponent {
       .then((data) => {
         console.log(data)
         this.chatrooms = data
+      })
+  }
+
+  message: string = ''
+  matricule: string = ''
+
+  setMess(event: any) {
+    this.message = event.target.value
+  }
+  setMatricule(event: any) {
+    this.matricule = event.target.value
+  }
+  sendFirst() {
+    const body: any = {
+      message: this.message,
+      target: this.matricule,
+    }
+
+    console.log('The request body is: ', body)
+
+    //send Process
+    const target: string = 'http://localhost:3001/messages/admin/send'
+    fetch(target, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.tokenExample}`,
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        if (response.ok) {
+          this.message = ''
+          window.location.reload()
+        } else {
+          console.error('Failed to send message')
+        }
+      })
+      .catch((error) => {
+        console.error('Network error:', error)
       })
   }
 }

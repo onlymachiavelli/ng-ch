@@ -342,3 +342,31 @@ body {
   margin-left: 20px;
   border: none;
 }
+
+.inputSend {
+  padding: 20px;
+  border-radius: 3px;
+  border: none;
+  width: 400px;
+}
+
+.sendBtn {
+  background-color: #4f6ebd;
+  color: #fff;
+  font-size: 14px;
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+.flx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 10px;
+}

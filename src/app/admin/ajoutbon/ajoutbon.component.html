@@ -27,7 +27,9 @@
   </head>
   <body>
     <!-- Main container for centering content -->
-    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div
+      class="d-flex flex-column min-vh-100 justify-content-center align-items-center"
+    >
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 m-5">
@@ -45,14 +47,28 @@
                     <label for="Nom" class="form-label">
                       Nom <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" placeholder="Nom" id="Nom" required />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nom"
+                      id="Nom"
+                      required
+                      (keyup)="setNom($event)"
+                    />
                   </div>
                   <!-- Matricule input -->
                   <div class="col">
                     <label for="Matricule" class="form-label">
                       Matricule <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" placeholder="Matricule" id="Matricule" required />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Matricule"
+                      id="Matricule"
+                      (keyup)="setMatricule($event)"
+                      required
+                    />
                   </div>
                 </div>
               </div>
@@ -62,7 +78,14 @@
                 <label for="médecin" class="form-label">
                   Médecin <span class="text-danger">*</span>
                 </label>
-                <input type="text" class="form-control" placeholder="Médecin" id="médecin" required />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Médecin"
+                  id="médecin"
+                  (keyup)="setMedecin($event)"
+                  required
+                />
               </div>
 
               <!-- Input field for photo -->
@@ -70,33 +93,39 @@
                 <label for="photo" class="form-label">
                   Photo <span class="text-danger">*</span>
                 </label>
-                <input type="file" class="form-control" id="photo" accept="image/*" required />
+                <input
+                  type="file"
+                  class="form-control"
+                  id="photo"
+                  accept="image/*"
+                  (change)="setFile($event)"
+                  required
+                />
               </div>
 
               <!-- Input field for date -->
-              <div class="col-md-12 m-2">
+              <!-- <div class="col-md-12 m-2">
                 <label for="date" class="form-label">
                   Date <span class="text-danger">*</span>
                 </label>
-                <input type="date" class="form-control" id="date" required />
-              </div>
-
-              <!-- Textarea for additional information -->
-              <div class="col-md-12 m-2">
-                <textarea
+                <input
+                  type="date"
                   class="form-control"
-                  placeholder="Informations supplémentaires"
-                  id="info"
-                  cols="30"
-                  rows="10"
+                  id="date"
                   required
-                ></textarea>
-              </div>
+                  (change)="setDate($event)"
+                />
+              </div> -->
 
               <!-- Checkbox for confirming information -->
               <div class="col-md-12 m-2">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="checkbox" required />
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="checkbox"
+                    required
+                  />
                   <label for="checkbox" class="form-check-label">
                     Confirmer les informations
                   </label>
@@ -105,8 +134,13 @@
 
               <!-- Submit button with custom color -->
               <div class="col-md-12 m-2">
-                <button id="submitBtn" type="submit" class="btn btn-custom">
-                  Confirmer
+                <button
+                  id="submitBtn"
+                  type="button"
+                  class="btn btn-custom"
+                  (click)="ajoutBon()"
+                >
+                  > Confirmer
                 </button>
               </div>
             </form>
@@ -115,12 +149,8 @@
       </div>
     </div>
 
-
-
-  
-    
     <!-- JavaScript for form validation -->
-   <!-- <script>
+    <!-- <script>
       // Add Bootstrap's validation styles to the form
       (function () {
         'use strict'

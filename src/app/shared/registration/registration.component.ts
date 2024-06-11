@@ -39,6 +39,7 @@ export class RegistrationComponent {
       matricule: this.matricule,
     }
 
+    console.log('The request body is: ', reqBody)
     try {
       const response = await fetch(this.backendRoute, {
         method: 'POST',

@@ -13,4 +13,9 @@ import { RouterModule, RouterOutlet } from '@angular/router'
 })
 export class SidenavComponent {
   public myDate = new Date()
+
+  logOut() {
+    localStorage.clear()
+    window.location.href = '/connexion'
+  }
 }

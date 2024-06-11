@@ -13,7 +13,7 @@
               <div class="online"></div>
             </div>
             <div class="desc-contact">
-              <p class="name">{{ chatroom.users.nom }}</p>
+              <p class="name">{{ chatroom.collaboratorMatricule }}</p>
               <p class="message">
                 Matrricule Num : {{ chatroom.users.matricule }}
               </p>
@@ -32,7 +32,26 @@
           padding-top: 100px;
         "
       >
-        Select a chat to start messaging
+        <div class="flx">
+          <p>Insert the Matricule of the targetted Collaborateur</p>
+          <Input
+            type="text"
+            class="inputSend"
+            placeholder="Enter the Matricule"
+            (keyup)="setMatricule($event)"
+          />
+
+          <textarea
+            type="text"
+            class="inputSend"
+            placeholder="Fist Message"
+            (keyup)="setMess($event)"
+          ></textarea>
+
+          <button (click)="sendFirst()" class="sendBtn">
+            Send First Message
+          </button>
+        </div>
       </section>
     </div>
   </div>
