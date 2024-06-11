@@ -6,6 +6,10 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { Router } from '@angular/router'
 
+import { storage } from '../../../firebase'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { v4 } from 'uuid'
+
 /*@ts-ignore*/
 @Component({
   selector: 'app-ajoutbon',
@@ -21,13 +25,9 @@ import { Router } from '@angular/router'
   styleUrl: './ajoutbon.component.css',
 })
 export class AjoutbonComponent implements OnInit {
-  constructor(private router: Router) {}
-
   ngOnInit(): void {}
 
-  ajouterBon() {
-    this.router.navigate(['/ajoutbon'])
-  }
+  ajouterBon() {}
 
   nom: string = ''
   matricule: string = ''
@@ -61,38 +61,45 @@ export class AjoutbonComponent implements OnInit {
   file: any = null
   setFile(event: any) {
     this.file = event.target.files[0]
-    console.log('C:\\Users\\Chaime\\Desktop\\' + this.file.name)
   }
 
+  //file handler
   ajoutBon() {
-    const bonBody: any = {
-      nom: this.nom,
-      matricule: this.matricule,
-      medecin: this.medecin,
-      date: this.date,
-      photo: 'C:\\Users\\Chaime\\Desktop\\' + this.file.name,
-    }
-
-    console.log(bonBody)
-
     try {
-      fetch('http://localhost:8083/api/v1/bon', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bonBody),
-      }).then((response) => {
-        console.log(response)
-        if (response.status === 200) {
-          window.alert('bon ajouté avec succès')
-          console.log('bon ajouté avec succès')
-        }
-      })
+      const id = v4()
+      const storageRef = ref(storage, `uploads/${id}`)
+      console.log('Uploading file:', this.file)
+      uploadBytes(storageRef, this.file)
+        .then(() => {
+          getDownloadURL(storageRef).then(async (url) => {
+            console.log('File uploaded successfully. File URL:', url)
+            const bonBody: any = {
+              nom: this.nom,
+              matricule: this.matricule,
+              medecin: this.medecin,
+              date: this.date,
+              photo: url,
+            }
+            fetch('http://localhost:8083/api/v1/bon', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(bonBody),
+            }).then((response) => {
+              console.log(response)
+              if (response.status === 200) {
+                window.alert('bon ajouté avec succès')
+                console.log('bon ajouté avec succès')
+              }
+            })
+          })
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     } catch (e) {
       console.log(e)
     }
-
-    console.log(bonBody)
   }
 }

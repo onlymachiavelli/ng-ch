@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core'
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core'
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
 import { MatSort, MatSortModule } from '@angular/material/sort'
 import { MatTableDataSource, MatTableModule } from '@angular/material/table'
@@ -11,10 +11,10 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 
 export interface MedecinData {
-  id: number
-  nom: string
-  matricule: String
-  specialite: string
+  id: any
+  nom: any
+  matricule: any
+  specialite: any
 }
 
 /*@ts-ignore */
@@ -34,65 +34,23 @@ export interface MedecinData {
   templateUrl: './listemedecin.component.html',
   styleUrls: ['./listemedecin.component.css'],
 })
-export class ListemedecinComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'nom', 'tel', 'specialite', 'action']
-  dataSource: MatTableDataSource<MedecinData>
-  medecin: any = []
+export class ListemedecinComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['id', 'nom', 'specialite', 'action']
+  dataSource: MatTableDataSource<MedecinData> = new MatTableDataSource()
+  medecin: MedecinData[] = []
   @ViewChild(MatPaginator) paginator!: MatPaginator
   @ViewChild(MatSort) sort!: MatSort
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog) {}
+
+  ngOnInit() {
     this.fetchMedecin()
-    this.dataSource = new MatTableDataSource(this.medecin)
-  }
-  openajouterMedecin() {
-    const nouvelMedecin: MedecinData = {
-      id: this.dataSource.data.length + 1,
-      nom: 'Nouveau',
-      matricule: '000000000',
-      specialite: '000000000000000',
-    }
-    this.dataSource.data.push(nouvelMedecin)
-    if (this.paginator) {
-      this.paginator._changePageSize(this.paginator.pageSize)
-    }
   }
 
   ngAfterViewInit() {
-    // Configurez  pagination et  tri
+    // Configure pagination and sorting
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage()
-    }
-  }
-  ajouterMedecin(): void {
-    this.dialog.open(DialogComponent, {
-      width: '50%',
-    })
-  }
-
-  modifierMedecin(row: any): void {
-    this.dialog.open(Dialog1Component, {
-      width: '50%',
-      data: row,
-    })
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-    })
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('Le dialogue a été fermé, données reçues:', result)
-    })
   }
 
   fetchMedecin() {
@@ -106,7 +64,54 @@ export class ListemedecinComponent implements AfterViewInit {
       .then((response) => response.json())
       .then((data) => {
         this.medecin = data
-        console.log(data)
+        this.dataSource.data = this.medecin // Update the dataSource with fetched data
+        console.log(this.medecin)
       })
+      .catch((error) => console.error('Error fetching data:', error))
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage()
+    }
+  }
+
+  ajouterMedecin(): void {
+    this.dialog.open(DialogComponent, {
+      width: '50%',
+    })
+  }
+
+  modifierMedecin(row: MedecinData): void {
+    this.dialog.open(Dialog1Component, {
+      width: '50%',
+      data: row,
+    })
+  }
+
+  openajouterMedecin() {
+    const nouvelMedecin: MedecinData = {
+      id: this.dataSource.data.length + 1,
+      nom: 'Nouveau',
+      matricule: '000000000',
+      specialite: '000000000000000',
+    }
+    this.dataSource.data.push(nouvelMedecin)
+    if (this.paginator) {
+      this.paginator._changePageSize(this.paginator.pageSize)
+    }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Le dialogue a été fermé, données reçues:', result)
+    })
   }
 }
